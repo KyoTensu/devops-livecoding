@@ -1,0 +1,13 @@
+---
+#Launch of the HTTP/Proxy
+- name: Launch proxy
+  community.docker.docker_container:
+    name: http-service
+    image: loicch/tp-devops-http-server
+    state: started
+    networks:
+      - name: my-network
+    ports:
+      - "80:80"
+  vars:
+    ansible_python_interpreter: /opt/docker_venv/bin/python

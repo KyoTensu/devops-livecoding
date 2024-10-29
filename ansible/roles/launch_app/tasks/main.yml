@@ -1,0 +1,13 @@
+---
+#Launch of the api
+- name: Launch api
+  community.docker.docker_container:
+    name: my-api
+    image: loicch/tp-devops-simple-api
+    state: started
+    ports:
+      - "8080:8080"
+    networks:
+      - name: my-network
+  vars:
+    ansible_python_interpreter: /opt/docker_venv/bin/python

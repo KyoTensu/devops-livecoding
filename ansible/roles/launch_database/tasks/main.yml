@@ -1,0 +1,17 @@
+---
+#Launch the database
+- name: Launch database
+  community.docker.docker_container:
+    name: my-db
+    image: loicch/tp-devops-database:latest
+    state: started
+    networks:
+      - name: my-network
+    ports:
+      - "5432:5432"
+    env:
+      POSTGRES_DB: "db"
+      POSTGRES_USER: "user"
+      POSTGRES_PASSWORD: "pwd"
+  vars:
+    ansible_python_interpreter: /opt/docker_venv/bin/python
